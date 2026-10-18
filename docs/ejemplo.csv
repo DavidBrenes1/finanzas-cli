@@ -1,0 +1,10 @@
+fecha,tipo,monto,categoria,descripcion
+2026-09-01,ingreso,850000,salario,Salario septiembre
+2026-09-03,gasto,180000,vivienda,Alquiler
+2026-09-05,gasto,42500.50,comida,Supermercado
+2026-09-12,gasto,15000,transporte,Gasolina
+2026-09-20,gasto,23000,ocio,Cine y cena
+2026-10-01,ingreso,850000,salario,Salario octubre
+2026-10-03,gasto,180000,vivienda,Alquiler
+2026-10-08,gasto,61200,comida,Supermercado
+2026-10-15,gasto,9800,transporte,Bus
