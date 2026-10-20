@@ -1,4 +1,4 @@
-# 💰 finanzas-cli
+#  finanzas-cli
 
 ![CI](https://github.com/DavidBrenes1/finanzas-cli/actions/workflows/ci.yml/badge.svg)
 ![Python](https://img.shields.io/badge/python-3.10%2B-blue)
@@ -29,7 +29,7 @@ Gastos inusuales
   #10 2026-10-12 comida            95,000.00  (2.4x el promedio de 40,000.00)
 ```
 
-## ✨ Funcionalidades
+##  Funcionalidades
 
 - **Registro de movimientos** con categoría, descripción, fecha y moneda.
 - **Multimoneda (CRC, USD, EUR)**: cada movimiento guarda su moneda original y los reportes
@@ -44,7 +44,7 @@ Gastos inusuales
 - **Precisión monetaria**: montos en centavos enteros y tipos de cambio en `Decimal`, nunca `float`.
 - **Migración automática**: las bases de datos de la versión 1.0 se actualizan solas al abrirlas.
 
-## 🚀 Instalación
+##  Instalación
 
 ```bash
 git clone https://github.com/DavidBrenes1/finanzas-cli.git
@@ -54,7 +54,7 @@ pip install -e .              # núcleo, sin dependencias
 pip install -e ".[graficos]"  # opcional: exportar gráficos PNG
 ```
 
-## 📖 Uso
+##  Uso
 
 ```bash
 # Registrar movimientos (fecha por defecto: hoy; moneda por defecto: CRC)
@@ -114,7 +114,7 @@ fecha,tipo,monto,categoria,descripcion,moneda
 2026-10-10,gasto,15.99,ocio,Netflix,USD
 ```
 
-## 🏗️ Arquitectura
+##  Arquitectura
 
 ```
 src/finanzas/
@@ -133,7 +133,7 @@ de cálculo, y estos últimos son funciones puras que no saben nada de la base d
 la terminal. Así se pueden probar de forma aislada y reutilizar, por ejemplo en una API web.
 Más detalles en [docs/ARQUITECTURA.md](docs/ARQUITECTURA.md).
 
-## 🧪 Pruebas
+##  Pruebas
 
 ```bash
 pip install -e ".[dev,graficos]"
@@ -144,9 +144,9 @@ ruff check .    # linter
 La integración continua (GitHub Actions) ejecuta el linter y las pruebas en Python 3.10 a 3.13
 en cada *push*. Los cambios de cada versión están en [CHANGELOG.md](CHANGELOG.md).
 
-## 🗺️ Hoja de ruta
+##  Hoja de ruta
 
-### ✅ v1.1 — Análisis y multimoneda (actual)
+###  v1.1 — Análisis y multimoneda (actual)
 - [x] Soporte multimoneda (CRC, USD, EUR) con tipo de cambio configurable
 - [x] Metas de ahorro con seguimiento de progreso
 - [x] Comparación entre meses
@@ -173,6 +173,6 @@ en cada *push*. Los cambios de cada versión están en [CHANGELOG.md](CHANGELOG.
 - [ ] Migración opcional a PostgreSQL mediante el patrón Repository
 - [ ] Imagen Docker y despliegue en la nube
 
-## 📄 Licencia
+##  Licencia
 
 MIT © 2026 David Brenes
