@@ -50,6 +50,22 @@ def formatear(centavos: int) -> str:
     return f"{signo}{abs(centavos) / 100:,.2f}"
 
 
+MONEDA_BASE = "CRC"
+MONEDAS = ("CRC", "USD", "EUR")
+
+
+def validar_moneda(codigo: str) -> str:
+    """Normaliza y valida un código de moneda.
+
+    >>> validar_moneda(" usd ")
+    'USD'
+    """
+    normalizado = codigo.strip().upper()
+    if normalizado not in MONEDAS:
+        raise ErrorValidacion(f"Moneda no soportada: {codigo!r}. Opciones: {', '.join(MONEDAS)}")
+    return normalizado
+
+
 @dataclass(frozen=True)
 class Transaccion:
     """Un movimiento de dinero (ingreso o gasto)."""
@@ -59,6 +75,7 @@ class Transaccion:
     categoria: str
     fecha: date
     descripcion: str = ""
+    moneda: str = MONEDA_BASE
     id: int | None = None
 
     def __post_init__(self) -> None:
@@ -66,8 +83,29 @@ class Transaccion:
             raise ErrorValidacion("El monto debe ser mayor que cero")
         if not self.categoria.strip():
             raise ErrorValidacion("La categoría no puede estar vacía")
+        if self.moneda not in MONEDAS:
+            raise ErrorValidacion(f"Moneda no soportada: {self.moneda!r}")
 
     @property
     def monto_con_signo(self) -> int:
         """Monto positivo para ingresos y negativo para gastos."""
         return self.centavos if self.tipo is Tipo.INGRESO else -self.centavos
+
+
+@dataclass(frozen=True)
+class Meta:
+    """Una meta de ahorro con monto objetivo y, opcionalmente, fecha límite."""
+
+    nombre: str
+    objetivo: int
+    ahorrado: int = 0
+    fecha_limite: date | None = None
+    id: int | None = None
+
+    def __post_init__(self) -> None:
+        if not self.nombre.strip():
+            raise ErrorValidacion("El nombre de la meta no puede estar vacío")
+        if self.objetivo <= 0:
+            raise ErrorValidacion("El objetivo debe ser mayor que cero")
+        if self.ahorrado < 0:
+            raise ErrorValidacion("El monto ahorrado no puede ser negativo")
